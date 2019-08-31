@@ -1,0 +1,38 @@
+﻿using Domain;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Infrastructure
+{
+	public class Ordenes : IDisposable
+	{
+		public void Dispose()
+		{
+			this.Dispose();
+		}
+
+		public List<Orden> ObtenerOrdenes()
+		{
+			var lista = new List<Orden>();
+				var orden1 = new Orden();
+			
+			orden1.ID = 1;
+			orden1.CompradorID = 50;
+			orden1.direccion = new Direccion() { Ciudad ="Azcapotzalco" , Calle = "Golondrinas 57" };
+			var orden2 = new Orden();
+			orden2.ID = 2;
+			orden2.CompradorID = 60;
+			orden2.direccion = new Direccion() { Ciudad = "Naucalpan", Calle = "Violetas 59" };
+
+			var orden3 = new Orden();
+			orden3.ID = 3;
+			orden3.CompradorID = 70;
+			orden3.direccion = new Direccion() { Ciudad = "Miguel Hidalgo", Calle = "MArina NAcional 329" };
+			lista.Add(orden1);
+			lista.Add(orden2);
+			lista.Add(orden3);
+			return lista;
+		}
+	}
+}
