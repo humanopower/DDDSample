@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +27,10 @@ namespace Presentation.WebAPI
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+			
+			string myConnSQL = Configuration.GetConnectionString("SQLAzureSIICDatabase");
+			string myConnPostgress = Configuration.GetConnectionString("PostgresSQLSIICDatabase");
+			services.AddTransient<IApplication>(f => new OrdenesDistribucion(myConnSQL, myConnPostgress));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

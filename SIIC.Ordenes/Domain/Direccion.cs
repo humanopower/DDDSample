@@ -9,7 +9,7 @@ namespace Domain
 	/// </summary>
 	public class Direccion
 	{
-		public string Calle { get; set; }
-		public string Ciudad { get; set; }
+		public string calle { get; set; }
+		public string codigopostal { get; set; }
 	}
 }

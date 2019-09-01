@@ -2,33 +2,38 @@
 using Infrastructure;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Application
 {
-	public class OrdenesDistribucion
+	public class OrdenesDistribucion : IApplication
 	{
-		public void AgregarOrdenDistribucion()
+		private readonly string _conexionAplicacion;
+		private readonly string _conexionPostgres;
+		public OrdenesDistribucion(string conexionAplicacion,string connecionPostgress)
 		{
-
-			
-			
-			
+			_conexionAplicacion = conexionAplicacion;
+			_conexionPostgres = connecionPostgress;
 		}
-		public List<Orden> ObtenerListadoOrdenes()
+		public IEnumerable<Orden> ObtenerListadoOrdenes()
 		{
-
-			var infraestructuraData = new Ordenes();
-				var ordenes = infraestructuraData.ObtenerOrdenes();
 			
+			string connstring = _conexionAplicacion;
+
+			var infraestructuraData = new Infrastructure.Data.Ordenes(connstring);
+			var ordenes = infraestructuraData.Get();
 			foreach (var orden in ordenes)
 			{
-				orden.direccion = new Direccion();
+				var direccionesApp = new DirecionesOrdenesDistribucion(_conexionPostgres);
+				orden.direccion = direccionesApp.ObtenerDireccionesOrdenesDeSurtimiento().ToList()[0];
 				orden.ObtenerItemsOrden();
-			
 			}
-			
 			return ordenes;
 		}
+		public void AgregarOrdenDistribucion()
+		{
+		}
+		
 
 	}
 }

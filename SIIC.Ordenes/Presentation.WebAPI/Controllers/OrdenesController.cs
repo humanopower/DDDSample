@@ -12,15 +12,19 @@ namespace Presentation.WebAPI.Controllers
     [ApiController]
     public class OrdenesController : ControllerBase
     {
-
+		private readonly IApplication _application;
+		public OrdenesController(IApplication application)
+		{
+			_application = application;
+		}
 		// GET api/values
 		[HttpGet]
 		public JsonResult Get()
 		{
-			var application = new OrdenesDistribucion();
+			
 			try
 			{
-				var lista = application.ObtenerListadoOrdenes();
+				var lista = _application.ObtenerListadoOrdenes();
 				return new JsonResult(lista);
 			}
 			catch (Exception ex)
