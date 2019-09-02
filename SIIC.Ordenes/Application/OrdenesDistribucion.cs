@@ -18,7 +18,7 @@ namespace Application
 			_conexionAplicacion = conexionAplicacion;
 			_conexionPostgres = connecionPostgress;
 			var services = new ServiceCollection();
-			services.AddScoped<IDataEntity>(s => new Infrastructure.Data.Ordenes(_conexionAplicacion));
+			services.AddScoped<IDataEntity>(s => new Infrastructure.Data.SqlServer.Ordenes(_conexionAplicacion));
 			var provider = services.BuildServiceProvider();
 			_dataServiceSql = provider.GetService<IDataEntity>();
 		}
