@@ -1,4 +1,6 @@
 ﻿using Domain;
+using Infrastructure.Data.Interface;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +11,19 @@ namespace Application
 	public class DirecionesOrdenesDistribucion
 	{
 		private readonly string _constring;
+		private readonly IDataEntity _dataServicePostgress;
 		public DirecionesOrdenesDistribucion(string constring)
 		{
 			_constring = constring;
+			var services = new ServiceCollection();
+			services.AddScoped<IDataEntity>(s => new Infrastructure.Data.Postgres.Direcciones(_constring));
+			var provider = services.BuildServiceProvider();
+			_dataServicePostgress = provider.GetService<IDataEntity>();
 		}
 
 		public IEnumerable<Direccion> ObtenerDireccionesOrdenesDeSurtimiento()
 		{
-
-			var infraestructuraData = new Infrastructure.Data.Postgres.Direcciones(_constring);
-			IEnumerable<Direccion> direcciones = infraestructuraData.GetDirecciones();
-			
+			IEnumerable<Direccion> direcciones = _dataServicePostgress.GetDirecciones();
 			return direcciones;
 		}
 	}
