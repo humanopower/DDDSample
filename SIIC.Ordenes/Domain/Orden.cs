@@ -12,6 +12,8 @@ namespace Domain
 		#region Atributos
 		
 		public int CompradorID { get; set; }
+		public string NombreComprador { get; set; }
+		public string dbOrigen { get; set; }
 		public Direccion direccion { get; set; }
 		public List<OrdenItem> OrdenItems { get; set; }
 

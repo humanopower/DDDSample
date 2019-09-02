@@ -11,5 +11,7 @@ namespace Domain
 	{
 		public string calle { get; set; }
 		public string codigopostal { get; set; }
+		public int compradorid { get; set; }
+		public string dborigen { get; set; }
 	}
 }

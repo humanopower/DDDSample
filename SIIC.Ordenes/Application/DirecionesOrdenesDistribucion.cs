@@ -10,22 +10,21 @@ namespace Application
 {
 	public class DirecionesOrdenesDistribucion
 	{
-		private readonly string _constring;
+		private readonly string _connstring;
 		private readonly IDataEntity _dataServicePostgress;
 		public DirecionesOrdenesDistribucion(string constring)
 		{
-			_constring = constring;
+			_connstring = constring;
 			var services = new ServiceCollection();
-			services.AddScoped<IDataEntity>(s => new Infrastructure.Data.Postgres.Direcciones(_constring));
+			services.AddScoped<IDataEntity>(s => new Infrastructure.Data.Postgres.Direcciones(_connstring));
 			var provider = services.BuildServiceProvider();
 			_dataServicePostgress = provider.GetService<IDataEntity>();
 		}
 
-		public IEnumerable<Direccion> ObtenerDireccionesOrdenesDeSurtimiento()
+		public Direccion ObtenerDireccionesOrdenesDeSurtimiento(int compradorId)
 		{
-			var diresinCast = _dataServicePostgress.Get();
-			IEnumerable<Direccion> direcciones = (IEnumerable<Direccion>)diresinCast;
-			return direcciones;
+			Direccion direccion =(_dataServicePostgress.Get() as List<Direccion>).Find(p => p.compradorid == compradorId);
+			return direccion;
 		}
 	}
 }

@@ -1,5 +1,7 @@
 ﻿using Domain;
 using Infrastructure;
+using Infrastructure.Data.Interface;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +12,25 @@ namespace Application
 	{
 		private readonly string _conexionAplicacion;
 		private readonly string _conexionPostgres;
+		private readonly IDataEntity _dataServiceSql;
 		public OrdenesDistribucion(string conexionAplicacion,string connecionPostgress)
 		{
 			_conexionAplicacion = conexionAplicacion;
 			_conexionPostgres = connecionPostgress;
+			var services = new ServiceCollection();
+			services.AddScoped<IDataEntity>(s => new Infrastructure.Data.Ordenes(_conexionAplicacion));
+			var provider = services.BuildServiceProvider();
+			_dataServiceSql = provider.GetService<IDataEntity>();
 		}
 		public IEnumerable<object> ObtenerListadoOrdenes()
 		{
 			
-			string connstring = _conexionAplicacion;
-
-			var infraestructuraData = new Infrastructure.Data.Ordenes(connstring);
-			var ordenes = infraestructuraData.Get();
+			var ordenes = _dataServiceSql.Get();
 			foreach (var ordenSinCast in ordenes)
 			{
 				var direccionesApp = new DirecionesOrdenesDistribucion(_conexionPostgres);
 				var orden = (Orden)ordenSinCast;
-				var direccion = direccionesApp.ObtenerDireccionesOrdenesDeSurtimiento().ToList()[0];
-				orden.direccion = (Direccion)direccion;
+				orden.direccion = direccionesApp.ObtenerDireccionesOrdenesDeSurtimiento(orden.CompradorID);
 				orden.ObtenerItemsOrden();
 			}
 			return ordenes;
