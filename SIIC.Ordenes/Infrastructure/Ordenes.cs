@@ -23,7 +23,7 @@ namespace Infrastructure
 			this.Dispose();
 		}
 
-		public IEnumerable<Orden> Get()
+		public IEnumerable<object> Get()
 		{
 			var lista = new List<Orden>();
 			var orden1 = new Orden();

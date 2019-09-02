@@ -33,23 +33,18 @@ namespace Infrastructure.Data.Postgres
 			throw new NotImplementedException();
 		}
 
-		public IEnumerable<Orden> Get()
+		public IEnumerable<object> Get()
 		{
-			throw new NotImplementedException();
-		}
-
-		public IEnumerable<Direccion> GetDirecciones()
-		{
-
-			IEnumerable<Direccion> direcciones = null;
+			IEnumerable<object> direcciones = null;
 
 			using (var conection = OpenConnection(_connstring))
 			{
-				direcciones = conection.Query<Direccion>("select * from direcciones");
+				direcciones =(IEnumerable<object>) conection.Query<Direccion>("select * from direcciones");
 			}
 			return direcciones;
-		
-	}
+		}
+
+
 
 		public void Update()
 		{

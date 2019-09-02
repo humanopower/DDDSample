@@ -6,8 +6,8 @@ namespace Infrastructure.Data.Interface
 {
 	public interface IDataEntity
 	{
-		IEnumerable<Orden> Get();
-		IEnumerable<Direccion> GetDirecciones();
+		IEnumerable<object> Get();
+	
 
 		void Add();
 		void Delete();

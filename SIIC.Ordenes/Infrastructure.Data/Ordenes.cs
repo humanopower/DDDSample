@@ -25,7 +25,7 @@ namespace Infrastructure.Data
 			throw new NotImplementedException();
 		}
 
-		public IEnumerable<Orden> Get()
+		public IEnumerable<object> Get()
 		{
 			IEnumerable<Orden> ordenes= null;
 			using (var conection = new SqlConnection(_connstring))

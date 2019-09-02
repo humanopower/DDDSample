@@ -15,17 +15,19 @@ namespace Application
 			_conexionAplicacion = conexionAplicacion;
 			_conexionPostgres = connecionPostgress;
 		}
-		public IEnumerable<Orden> ObtenerListadoOrdenes()
+		public IEnumerable<object> ObtenerListadoOrdenes()
 		{
 			
 			string connstring = _conexionAplicacion;
 
 			var infraestructuraData = new Infrastructure.Data.Ordenes(connstring);
 			var ordenes = infraestructuraData.Get();
-			foreach (var orden in ordenes)
+			foreach (var ordenSinCast in ordenes)
 			{
 				var direccionesApp = new DirecionesOrdenesDistribucion(_conexionPostgres);
-				orden.direccion = direccionesApp.ObtenerDireccionesOrdenesDeSurtimiento().ToList()[0];
+				var orden = (Orden)ordenSinCast;
+				var direccion = direccionesApp.ObtenerDireccionesOrdenesDeSurtimiento().ToList()[0];
+				orden.direccion = (Direccion)direccion;
 				orden.ObtenerItemsOrden();
 			}
 			return ordenes;

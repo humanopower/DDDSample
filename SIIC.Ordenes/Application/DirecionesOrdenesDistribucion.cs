@@ -23,7 +23,8 @@ namespace Application
 
 		public IEnumerable<Direccion> ObtenerDireccionesOrdenesDeSurtimiento()
 		{
-			IEnumerable<Direccion> direcciones = _dataServicePostgress.GetDirecciones();
+			var diresinCast = _dataServicePostgress.Get();
+			IEnumerable<Direccion> direcciones = (IEnumerable<Direccion>)diresinCast;
 			return direcciones;
 		}
 	}

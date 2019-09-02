@@ -7,6 +7,6 @@ namespace Application
 {
 	public interface IApplication
 	{
-		IEnumerable<Orden> ObtenerListadoOrdenes();
+		IEnumerable<object> ObtenerListadoOrdenes();
 	}
 }
