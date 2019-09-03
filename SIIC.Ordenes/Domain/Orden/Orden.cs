@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Domain
+namespace Domain.Orden
 {
 	/// <summary>
 	/// Se refiere a la clase dominio entidad Orden de surtimiento de producto
