@@ -13,9 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.Interfa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.Postgres", "Infrastructure.Data.Postgres\Infrastructure.Data.Postgres.csproj", "{EB377C02-0E84-40B2-9F30-D7D6E2646943}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Data.SqlServer", "Infrastructure.Data.SqlServer\Infrastructure.Data.SqlServer.csproj", "{06AD3BE0-C378-4910-B2FA-53AAA77E4DE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.SqlServer", "Infrastructure.Data.SqlServer\Infrastructure.Data.SqlServer.csproj", "{06AD3BE0-C378-4910-B2FA-53AAA77E4DE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Data.RabbitMQ", "Infrastructure.Data.RabbitMQ\Infrastructure.Data.RabbitMQ.csproj", "{37327FC5-76E3-4928-9730-707BBCF58107}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Data.RabbitMQ", "Infrastructure.Data.RabbitMQ\Infrastructure.Data.RabbitMQ.csproj", "{37327FC5-76E3-4928-9730-707BBCF58107}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InformixMainApp", "InformixMainApp\InformixMainApp.csproj", "{62F18BEE-5CE4-45C9-9350-49809E04CF2E}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{763D9F9D-97AD-4F51-9566-A0C3A8C371C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{37327FC5-76E3-4928-9730-707BBCF58107}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37327FC5-76E3-4928-9730-707BBCF58107}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37327FC5-76E3-4928-9730-707BBCF58107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62F18BEE-5CE4-45C9-9350-49809E04CF2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62F18BEE-5CE4-45C9-9350-49809E04CF2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62F18BEE-5CE4-45C9-9350-49809E04CF2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62F18BEE-5CE4-45C9-9350-49809E04CF2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{763D9F9D-97AD-4F51-9566-A0C3A8C371C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{763D9F9D-97AD-4F51-9566-A0C3A8C371C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{763D9F9D-97AD-4F51-9566-A0C3A8C371C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{763D9F9D-97AD-4F51-9566-A0C3A8C371C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

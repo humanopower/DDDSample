@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  informixmainapp:
+    image: ${DOCKER_REGISTRY-}informixmainapp
+    build:
+      context: .
+      dockerfile: InformixMainApp/Dockerfile
